@@ -1,17 +1,12 @@
-const PORT = 8000;
 
-import axios from 'axios';
+const express = require('express');
+const dotenv = require("dotenv").config();
 
-import express from 'express';
-
-import geoblaze from 'geoblaze';
+const port = process.env.PORT ;
 
 const app = express(); 
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.use(express.json());
+app.use('/api/droughtstatus', require('./routes/droughtRoutes'));
 
-app.get('/', (req, res) => { 
-
-}
-
-
+app.listen(port, () => console.log(`Server running on port ${port}`));
